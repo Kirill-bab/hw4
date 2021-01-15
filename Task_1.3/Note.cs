@@ -14,7 +14,7 @@ namespace Task_1._3
         private static List<Note> _notes = new List<Note>(0);
 
         [JsonProperty("id")]
-        public int Id { get; }
+        public int Id { get; private set; }
 
         [JsonProperty("title")]
         public string Title { get; }
@@ -41,6 +41,10 @@ namespace Task_1._3
         public static void DeleteNote(int id)
         {
             _notes.Remove(FindNote(id));
+            foreach (var note in _notes)
+            {
+                if (note.Id > id) note.Id--;
+            }
             SaveNotesToFile();
         }
 
