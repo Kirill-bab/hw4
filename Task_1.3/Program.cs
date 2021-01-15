@@ -154,7 +154,7 @@ namespace Task_1._3
                 var input = Console.ReadLine().Trim();
                 if (input == "q") break;
 
-                text += Environment.NewLine + input;
+                text = string.IsNullOrEmpty(input)? text + "" : text + Environment.NewLine + input;
             }
 
             Console.WriteLine("----------------------------------");
